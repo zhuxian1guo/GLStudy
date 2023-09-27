@@ -1,6 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
-using static GLline2;
+using UnityEngine.UIElements;
+//using static GLline2;
 
 public enum DrawingType
 {
@@ -25,7 +26,7 @@ public class GLLine : MonoBehaviour
     public int quadSize = 2;
     #endregion
 
-    #region ²ÄÖÊÉèÖÃ
+    #region æè´¨è®¾ç½®
     private Material _shapeMaterial;
     //static Material lineMaterial;
     private void SetMaterialPass()
@@ -37,7 +38,7 @@ public class GLLine : MonoBehaviour
 
         _shapeMaterial.SetPass(0);
 
-        _shapeMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);  //¿ªÆôµ¥ÃæË«Ãæ
+        _shapeMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);  //å¼€å¯å•é¢åŒé¢
     }
 
 
@@ -51,42 +52,42 @@ public class GLLine : MonoBehaviour
     //        lineMaterial = new Material(shader);
     //        lineMaterial.hideFlags = HideFlags.HideAndDontSave;
 
-    //        //lineMaterial.SetColor("_BaseColor",Color.blue);  //¿ªÆôµ¥ÃæË«Ãæ
+    //        //lineMaterial.SetColor("_BaseColor",Color.blue);  //å¼€å¯å•é¢åŒé¢
 
     //        // Turn on alpha blending
     //        lineMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
     //        lineMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
 
     //        // Turn backface culling off
-    //        lineMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);  //¿ªÆôµ¥ÃæË«Ãæ
+    //        lineMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);  //å¼€å¯å•é¢åŒé¢
     //        // Turn off depth writes
     //        lineMaterial.SetInt("_ZWrite", 0);
     //    }
     //}
     #endregion
 
-    #region äÖÈ¾ÉúÃüÖÜÆÚ
+    #region æ¸²æŸ“ç”Ÿå‘½å‘¨æœŸ
     //public void OnPreRender()
     //{
     //    //oldCulling = GL.invertCulling;
     //    //GL.invertCulling = false;
     //}
 
-    //Ö»ÄÜäÖÈ¾2D
+    //åªèƒ½æ¸²æŸ“2D
     //public void OnPostRender()
     //{
     //    //CreateLineMaterial();
-    //    //GL.LoadOrtho();//ÉèÖÃ»æÖÆ2DÍ¼Ïñ
+    //    //GL.LoadOrtho();//è®¾ç½®ç»˜åˆ¶2Då›¾åƒ
     //    //GL.PushMatrix();
 
-    //    //////»­´Ó×óÏÂµ½ÓÒÉÏµÄÏß                                   
+    //    //////ç”»ä»å·¦ä¸‹åˆ°å³ä¸Šçš„çº¿                                   
     //    //GL.Begin(GL.LINES);
     //    //GL.Color(Color.red);
     //    //GL.Vertex(new Vector2(0, 0));
     //    //GL.Vertex(new Vector2(1, 1));
     //    //GL.End();
 
-    //    ////»­´Ó×óÉÏµ½ÓÒÏÂµÄÏß                                                                                                         //
+    //    ////ç”»ä»å·¦ä¸Šåˆ°å³ä¸‹çš„çº¿                                                                                                         //
     //    //GL.Begin(GL.LINES);
     //    //GL.Color(Color.yellow);
     //    //GL.Vertex(new Vector2(0, 1));
@@ -94,7 +95,7 @@ public class GLLine : MonoBehaviour
     //    //GL.End();
 
 
-    //    ////»­Ìî³ä¶à±ßĞÎ
+    //    ////ç”»å¡«å……å¤šè¾¹å½¢
     //    //GL.Begin(GL.QUADS);
     //    //GL.Color(Color.green);
     //    //GL.Vertex(new Vector2(0.1f, 0.1f));
@@ -108,12 +109,12 @@ public class GLLine : MonoBehaviour
     //    //GL.PopMatrix();
     //}
 
-    //¿ÉÒÔäÖÈ¾3D
+    //å¯ä»¥æ¸²æŸ“3D
     #region MYCode
 
     //void OnRenderObject()
     //{
-    //    Debug.Log("ÉèÖÃ²ÄÖÊ!");
+    //    Debug.Log("è®¾ç½®æè´¨!");
     //    //CreateLineMaterial();
     //    SetMaterialPass();
 
@@ -153,16 +154,16 @@ public class GLLine : MonoBehaviour
     //    //// GL.LINE_STRIP
     //    //DrawCircle();
 
-    //    //// GL.TRIANGLE Èı½ÇĞÎ
+    //    //// GL.TRIANGLE ä¸‰è§’å½¢
     //    //DrawTriangle();
 
-    //    //// GL.TRIANGLES ËÄ±ßĞÎ Á½¸öÈı½ÇĞÎ
+    //    //// GL.TRIANGLES å››è¾¹å½¢ ä¸¤ä¸ªä¸‰è§’å½¢
     //    //DrawTriangles();
 
-    //    // »æÖÆÁ¢·½Ìå
+    //    // ç»˜åˆ¶ç«‹æ–¹ä½“
     //    DrawCube2();
 
-    //    //»æÖÆÍ¼Æ¬
+    //    //ç»˜åˆ¶å›¾ç‰‡
     //    DrawPic();
 
     //    GL.PopMatrix();
@@ -196,16 +197,21 @@ public class GLLine : MonoBehaviour
         GL.PopMatrix();
     }
 
-    //void OnGUI()//ËùÓĞ¹ØÓÚGUIµÄ»æÖÆÖ»ÄÜĞ´ÔÚÕâ¸ö·½·¨ÀïÃæ£¬²»¹ı¿ÉÒÔ½«´Ë½Å±¾¸³Óè¸øÆäËüÎïÌå£¬²»Ò»¶¨ÊÇÖ÷ÉãÏñ»ú
+    //void OnGUI()//æ‰€æœ‰å…³äºGUIçš„ç»˜åˆ¶åªèƒ½å†™åœ¨è¿™ä¸ªæ–¹æ³•é‡Œé¢ï¼Œä¸è¿‡å¯ä»¥å°†æ­¤è„šæœ¬èµ‹äºˆç»™å…¶å®ƒç‰©ä½“ï¼Œä¸ä¸€å®šæ˜¯ä¸»æ‘„åƒæœº
     //{
-    //    //string string_content = "Ïß";
+    //    //string string_content = "çº¿";
     //    //GUIStyle fontStyle = new GUIStyle();
-    //    //fontStyle.normal.background = null;   //ÉèÖÃ±³¾°Ìî³ä
-    //    //fontStyle.normal.textColor = Color.white;//ÉèÖÃ×ÖÌåÑÕÉ«
-    //    //fontStyle.fontSize = 24;//×ÖÌå´óĞ¡
-    //    //Vector2 string_size = fontStyle.CalcSize(new GUIContent(string_content));//¸ù¾İÉèÖÃµÄÑùÊ½ÇóµÃ×ÖÌå¾ßÌåµÄ³ß´ç
+    //    //fontStyle.normal.background = null;   //è®¾ç½®èƒŒæ™¯å¡«å……
+    //    //fontStyle.normal.textColor = Color.white;//è®¾ç½®å­—ä½“é¢œè‰²
+    //    //fontStyle.fontSize = 24;//å­—ä½“å¤§å°
+    //    //Vector2 string_size = fontStyle.CalcSize(new GUIContent(string_content));//æ ¹æ®è®¾ç½®çš„æ ·å¼æ±‚å¾—å­—ä½“å…·ä½“çš„å°ºå¯¸
     //    //GUI.Label(new Rect(0, 0, string_size.x, string_size.y), string_content, fontStyle);
     //}
+
+    private void Start()
+    {
+        GetTargetRelatPos(GameObject.Find("Root").transform,this.transform);
+    }
 
     private void Update()
     {
@@ -216,7 +222,7 @@ public class GLLine : MonoBehaviour
     }
     #endregion
 
-    #region äÖÈ¾·½·¨
+    #region æ¸²æŸ“æ–¹æ³•
 
     private void DrawCircle()
     {
@@ -240,22 +246,22 @@ public class GLLine : MonoBehaviour
         GL.End();
     }
 
-    //Ê¹ÓÃTRIANGLES½øĞĞ»æÖÆÈı½ÇĞÎ
+    //ä½¿ç”¨TRIANGLESè¿›è¡Œç»˜åˆ¶ä¸‰è§’å½¢
     private void DrawTriangle()
     {
         GL.Begin(GL.TRIANGLES);
-        //Ë³Ê±Õë
+        //é¡ºæ—¶é’ˆ
         GL.Color(Color.red);
-        GL.Vertex3(-triangleSize, -triangleSize, 0);//×óÏÂ
+        GL.Vertex3(-triangleSize, -triangleSize, 0);//å·¦ä¸‹
         GL.Color(Color.green);
-        GL.Vertex3(0, triangleSize, 0);//ÉÏ     
+        GL.Vertex3(0, triangleSize, 0);//ä¸Š     
         GL.Color(Color.blue);
-        GL.Vertex3(triangleSize, -triangleSize, 0);//ÓÒÏÂ
+        GL.Vertex3(triangleSize, -triangleSize, 0);//å³ä¸‹
         GL.End();
     }
 
 
-    //TRIANGLE_STRIP Ä¿±ê£º¹²ÓÃ¶¥µã
+    //TRIANGLE_STRIP ç›®æ ‡ï¼šå…±ç”¨é¡¶ç‚¹
     private void DrawTriangles()
     {
         GL.Begin(GL.TRIANGLE_STRIP);
@@ -270,13 +276,13 @@ public class GLLine : MonoBehaviour
         GL.End();
     }
 
-    //Ä¿±ê£ºUnity×óÊÖ×ø±êÏµ
-    //»æÖÆCUBEµÄ´úÂë
+    //ç›®æ ‡ï¼šUnityå·¦æ‰‹åæ ‡ç³»
+    //ç»˜åˆ¶CUBEçš„ä»£ç 
     private void DrawCube()
     {
         GL.Begin(GL.QUADS);
 
-        //ÕıÃæ
+        //æ­£é¢
         GL.Color(Color.red);
         GL.Vertex3(-quadSize, -quadSize, -quadSize);
         GL.Vertex3(quadSize, -quadSize, -quadSize);
@@ -301,7 +307,7 @@ public class GLLine : MonoBehaviour
         GL.Vertex3(-quadSize, quadSize, quadSize);
         GL.Vertex3(-quadSize, quadSize, -quadSize);
 
-        //µ×Ãæ
+        //åº•é¢
         GL.Color(Color.gray);
         GL.Vertex3(-quadSize, -quadSize, -quadSize);
         GL.Vertex3(-quadSize, -quadSize, quadSize);
@@ -309,7 +315,7 @@ public class GLLine : MonoBehaviour
         GL.Vertex3(quadSize, -quadSize, -quadSize);
 
 
-        //¶¥Ãæ
+        //é¡¶é¢
         GL.Color(Color.black);
         GL.Vertex3(-quadSize, quadSize, -quadSize);
         GL.Vertex3(quadSize, quadSize, -quadSize);
@@ -320,12 +326,12 @@ public class GLLine : MonoBehaviour
     }
 
 
-    //»­Á¢·½Ìå
+    //ç”»ç«‹æ–¹ä½“
     private void DrawCube2()
     {
         GL.Begin(GL.QUADS);
 
-        //ÕıÃæ
+        //æ­£é¢
         GL.Color(Color.red);
         GL.Vertex3(-quadSize, -quadSize, -quadSize);
         GL.Vertex3(quadSize, -quadSize, -quadSize);
@@ -350,7 +356,7 @@ public class GLLine : MonoBehaviour
         GL.Vertex3(-quadSize, quadSize, quadSize);
         GL.Vertex3(-quadSize, quadSize, -quadSize);
 
-        //µ×Ãæ
+        //åº•é¢
         GL.Color(Color.gray);
         GL.Vertex3(-quadSize, -quadSize, -quadSize);
         GL.Vertex3(-quadSize, -quadSize, quadSize);
@@ -358,7 +364,7 @@ public class GLLine : MonoBehaviour
         GL.Vertex3(quadSize, -quadSize, -quadSize);
 
 
-        //¶¥Ãæ
+        //é¡¶é¢
         GL.Color(Color.black);
         GL.Vertex3(-quadSize, quadSize, -quadSize);
         GL.Vertex3(quadSize, quadSize, -quadSize);
@@ -369,8 +375,8 @@ public class GLLine : MonoBehaviour
     }
 
 
-    //»­Í¼Æ¬
-    public Material _materialPic;//»­Í¼ËùÊ¹ÓÃµÄPic
+    //ç”»å›¾ç‰‡
+    public Material _materialPic;//ç”»å›¾æ‰€ä½¿ç”¨çš„Pic
     public float _PicSize = 5.0f;
 
     private void DrawPic()
@@ -380,7 +386,7 @@ public class GLLine : MonoBehaviour
             return;
         }
         _materialPic.SetPass(0);
-        _materialPic.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);  //¿ªÆôµ¥ÃæË«Ãæ
+        _materialPic.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);  //å¼€å¯å•é¢åŒé¢
         GL.PushMatrix();
         GL.Begin(GL.QUADS);
 
@@ -398,5 +404,127 @@ public class GLLine : MonoBehaviour
         GL.PopMatrix();
 
     }
+    #endregion
+
+    #region     å˜æ¢
+    public Transform targetPos;
+    public Transform centerPos;
+    public Vector3 GetTargetRelatPos(Transform targetPos1, Transform centerPos1)
+    {
+        Vector3 result = new Vector3(0, 0, 0);
+        Vector3 v3 = targetPos1.position - centerPos1.position;
+        result.x = Vector3.Dot(v3, centerPos1.right);
+        result.y = Vector3.Dot(v3, centerPos1.up);
+        result.z = Vector3.Dot(v3, centerPos1.forward);
+        return result;
+    }
+
+    public void OnDrawGizmos()
+    {
+        // ç»¿è‰²å°çƒç»˜åˆ¶
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(centerPos.position, 0.1f);
+        Gizmos.DrawSphere(targetPos.position, 0.1f);
+
+        // åæ ‡è¾…åŠ©çº¿ç»˜åˆ¶
+        Gizmos.color = Color.red;      //X
+        Gizmos.DrawLine(centerPos.position, centerPos.position + centerPos.right * 10);
+        Gizmos.color = Color.green;   //y
+        Gizmos.DrawLine(centerPos.position, centerPos.position + centerPos.up * 10);
+        Gizmos.color = Color.blue;     //Z
+        Gizmos.DrawLine(centerPos.position, centerPos.position + centerPos.forward * 10);
+
+        //å‘é‡ç»˜åˆ¶
+        Gizmos.color = Color.yellow;  //æŒ‡å‘çº¿
+        Gizmos.DrawLine(centerPos.position, targetPos.position);
+        Vector3 v3 = GetTargetRelatPos(targetPos, centerPos);
+
+        //å‚çº¿ç»˜åˆ¶ ä»£è¡¨å‘é‡æŠ•å½±åæ ‡è½´çš„å‚çº¿
+        Gizmos.color = Color.white; 
+        Gizmos.DrawLine(targetPos.position, centerPos.position + v3.x * centerPos.right);
+        Gizmos.DrawLine(targetPos.position, centerPos.position + v3.y * centerPos.up);
+        Gizmos.DrawLine(targetPos.position, centerPos.position + v3.z * centerPos.forward);
+
+        //å°çƒç»˜åˆ¶
+        Gizmos.DrawSphere(centerPos.position + v3.x * centerPos.right, 0.1f);
+        Gizmos.DrawSphere(centerPos.position + v3.y * centerPos.up, 0.1f);
+        Gizmos.DrawSphere(centerPos.position + v3.z * centerPos.forward, 0.1f);
+
+        //Debug
+        Debug.Log(GetTargetRelatPosFirst(targetPos, centerPos));
+
+        // çŸ©é˜µ         
+        //Scale-- - Rotate--Translate
+        Debug.LogWarning("ç¼©æ”¾çŸ©é˜µ");
+        Debug.Log(Matrix4x4.Scale(centerPos.localScale));
+        Debug.LogWarning("ç¼©æ”¾è½¬ç½®çŸ©é˜µ");
+        Debug.Log(centerPos.worldToLocalMatrix);
+        Debug.Log(Matrix4x4.Scale(centerPos.localScale).inverse);
+
+
+        Debug.LogWarning("æ—‹è½¬çŸ©é˜µ");
+        // æ—‹è½¬çŸ©é˜µæœ¬èº«éœ€è¦3x3çŸ©é˜µï¼Œè¯¥çŸ©é˜µè®°å½•äº†å¯¹è±¡æœ¬åœ°åæ ‡çš„ä¸‰ä¸ªåæ ‡è½´çš„å•ä½å‘é‡ï¼Œå³centerPos.Rightå’ŒcenterPos.Upä»¥åŠcenterPos.Forwardä¸‰ä¸ªåæ ‡è½´çš„å‘é‡
+        Debug.Log(Matrix4x4.Rotate(centerPos.rotation));
+
+        // å‘é‡
+        Debug.Log(centerPos.right);
+        Debug.Log(centerPos.up);
+        Debug.Log(centerPos.forward);
+
+        //æ—‹è½¬çŸ©é˜µè½¬ç½®æ“ä½œ
+        Debug.LogWarning("æ—‹è½¬è½¬ç½®çŸ©é˜µ");
+        Debug.Log(Matrix4x4.Transpose(Matrix4x4.Rotate(centerPos.rotation)));
+
+
+        Debug.LogWarning("ä½ç§»çŸ©é˜µ");
+        Debug.Log(Matrix4x4.Translate(centerPos.position));
+
+        //æ—‹è½¬çŸ©é˜µè½¬ç½®æ“ä½œ
+        Debug.LogWarning("ä½ç§»è½¬ç½®çŸ©é˜µ");
+        Debug.Log(Matrix4x4.Translate(centerPos.position).inverse);
+
+
+
+
+        Debug.LogWarning("çŸ©é˜µä¹˜æ³•1");
+        Matrix4x4 trsOne = Matrix4x4.TRS(centerPos.position, centerPos.rotation, centerPos.localScale);
+        Debug.Log(trsOne);
+
+        Debug.LogWarning("çŸ©é˜µä¹˜æ³•2---T*R*S");
+        Matrix4x4 trsTwo = Matrix4x4.Translate(centerPos.position) * Matrix4x4.Rotate(centerPos.rotation) * Matrix4x4.Scale(centerPos.localScale);
+        Debug.Log(trsTwo);
+
+        Debug.LogWarning("çŸ©é˜µä¹˜æ³•---è½¬ç½®çŸ©é˜µ---S*R*T");  
+        Matrix4x4 trsThree = Matrix4x4.Scale(centerPos.localScale).inverse * Matrix4x4.Transpose(Matrix4x4.Rotate(centerPos.rotation)) * Matrix4x4.Translate(centerPos.position).inverse;
+        Debug.Log(trsTwo);
+
+
+    }
+
+
+    #region ä¸‰ç§å°†ç‚¹è½¬æ¢ä¸ºç›¸å¯¹åæ ‡çš„æ–¹æ³•
+    //ç¬¬ä¸€ç§ï¼š
+    public Vector3 GetTargetRelatPosFirst(Transform targetPos, Transform centerPos)
+    {
+        return centerPos.InverseTransformPoint(targetPos.position);
+    }
+    //ç¬¬äºŒç§ï¼š
+    public Vector3 GetTargetRelatPosSencond(Transform targetPos, Transform centerPos)
+    {
+        Matrix4x4 m4 = centerPos.worldToLocalMatrix;
+        return m4.MultiplyPoint3x4(targetPos.position);
+    }
+    //ç¬¬ä¸‰ç§ï¼š
+    public Vector3 GetTargetRelatPosThird(Transform targetPos, Transform centerPos)
+    {
+        Vector4 v4 = new Vector4(targetPos.position.x, targetPos.position.y, targetPos.position.z, 1);
+        return centerPos.worldToLocalMatrix * v4;
+
+    }
+    #endregion
+
+
+
+
     #endregion
 }
