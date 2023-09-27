@@ -457,10 +457,11 @@ public class GLLine : MonoBehaviour
         //Scale-- - Rotate--Translate
         Debug.LogWarning("缩放矩阵");
         Debug.Log(Matrix4x4.Scale(centerPos.localScale));
-        Debug.LogWarning("缩放转置矩阵");
-        Debug.Log(centerPos.worldToLocalMatrix);
-        Debug.Log(Matrix4x4.Scale(centerPos.localScale).inverse);
 
+        Debug.LogWarning("缩放转置矩阵");
+ 
+        Debug.Log(Matrix4x4.Scale(centerPos.localScale).inverse);
+        Debug.Log(centerPos.worldToLocalMatrix);//?????
 
         Debug.LogWarning("旋转矩阵");
         // 旋转矩阵本身需要3x3矩阵，该矩阵记录了对象本地坐标的三个坐标轴的单位向量，即centerPos.Right和centerPos.Up以及centerPos.Forward三个坐标轴的向量
@@ -484,8 +485,6 @@ public class GLLine : MonoBehaviour
         Debug.Log(Matrix4x4.Translate(centerPos.position).inverse);
 
 
-
-
         Debug.LogWarning("矩阵乘法1");
         Matrix4x4 trsOne = Matrix4x4.TRS(centerPos.position, centerPos.rotation, centerPos.localScale);
         Debug.Log(trsOne);
@@ -496,9 +495,12 @@ public class GLLine : MonoBehaviour
 
         Debug.LogWarning("矩阵乘法---转置矩阵---S*R*T");  
         Matrix4x4 trsThree = Matrix4x4.Scale(centerPos.localScale).inverse * Matrix4x4.Transpose(Matrix4x4.Rotate(centerPos.rotation)) * Matrix4x4.Translate(centerPos.position).inverse;
-        Debug.Log(trsTwo);
+        Debug.Log(trsThree);
 
-
+        Debug.LogWarning("矩阵乘法---转置矩阵---S*R*T");
+        Matrix4x4 m4 = centerPos.worldToLocalMatrix * Matrix4x4.Scale(centerPos.localScale);
+        Debug.Log(m4);
+        //return m4.MultiplyPoint3x4(targetPos.position);
     }
 
 
