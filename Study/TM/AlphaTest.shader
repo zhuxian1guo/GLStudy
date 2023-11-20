@@ -17,6 +17,8 @@ Shader "Custom/Test1"
         Pass
         {
             Tags{"LightMode"="ForwardBase"}
+            Cull Off
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag

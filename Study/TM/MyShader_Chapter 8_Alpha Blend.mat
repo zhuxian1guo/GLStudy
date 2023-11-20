@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MyShader_Chapter 8_Alpha Blend
-  m_Shader: {fileID: 4800000, guid: a6d4c1831926b104eb0c64f35c7a5d6b, type: 3}
+  m_Shader: {fileID: 4800000, guid: f89c52f9ffd3d684f92059172a44be8f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
