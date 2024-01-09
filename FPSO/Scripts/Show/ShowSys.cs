@@ -26,7 +26,7 @@ public class ShowSys : MonoBehaviour
     void Start()
     {
         InitIDFM();
-        SplitStr("sss,ss",null);
+        //SplitStr("sss,ss",null);
     }
 
 
@@ -64,32 +64,88 @@ public class ShowSys : MonoBehaviour
                         {
                         string[] strarray = SplitStr(item.GetChild(i).name, null);
                             if (strarray[strarray.Length-1].Substring(0,1)=="#") {
-                                    GameObject Cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                                    GameObject Cube = GameObject.Instantiate(fm_b);
+                                    //GameObject Cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                                     Cube.transform.position = item.GetChild(i).transform.position;
                                     Cube.transform.parent = item.GetChild(i).transform;
                             }                 
                         }
                         break;
 
-                    case "fm_d":
-                        Debug.Log(item.name);
+                        case "fm_d":
+                        Debug.Log(item.childCount);
+                        for (int i = 0; i <= item.childCount - 1; i++)
+                        {
+                            string[] strarray = SplitStr(item.GetChild(i).name, null);
+                            if (strarray[strarray.Length - 1].Substring(0, 1) == "#")
+                            {
+                                GameObject Cube = GameObject.Instantiate(fm_d);
+                                //GameObject Cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                                Cube.transform.position = item.GetChild(i).transform.position;
+                                Cube.transform.parent = item.GetChild(i).transform;
+                            }
+                        }   
                         break;
 
                     case "fm_e":
-                        Debug.Log(item.name);
-                        break;
+                    Debug.Log(item.childCount);
+                    for (int i = 0; i <= item.childCount - 1; i++)
+                    {
+                        string[] strarray = SplitStr(item.GetChild(i).name, null);
+                        if (strarray[strarray.Length - 1].Substring(0, 1) == "#")
+                        {
+                            GameObject Cube = GameObject.Instantiate(fm_e);
+                            //GameObject Cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                            Cube.transform.position = item.GetChild(i).transform.position;
+                            Cube.transform.parent = item.GetChild(i).transform;
+                        }
+                    }
+                    break;
 
                     case "fm_g":
-                        Debug.Log(item.name);
-                        break;
+                    Debug.Log(item.childCount);
+                    for (int i = 0; i <= item.childCount - 1; i++)
+                    {
+                        string[] strarray = SplitStr(item.GetChild(i).name, null);
+                        if (strarray[strarray.Length - 1].Substring(0, 1) == "#")
+                        {
+                            GameObject Cube = GameObject.Instantiate(fm_g);
+                            //GameObject Cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                            Cube.transform.position = item.GetChild(i).transform.position;
+                            Cube.transform.parent = item.GetChild(i).transform;
+                        }
+                    }
+                    break;
 
                     case "fm_h":
-                        Debug.Log(item.name);
-                        break;
+                    Debug.Log(item.childCount);
+                    for (int i = 0; i <= item.childCount - 1; i++)
+                    {
+                        string[] strarray = SplitStr(item.GetChild(i).name, null);
+                        if (strarray[strarray.Length - 1].Substring(0, 1) == "#")
+                        {
+                            GameObject Cube = GameObject.Instantiate(fm_h);
+                            //GameObject Cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                            Cube.transform.position = item.GetChild(i).transform.position;
+                            Cube.transform.parent = item.GetChild(i).transform;
+                        }
+                    }
+                    break;
 
                     case "fm_qt":
-                        Debug.Log(item.name);
-                        break;
+                    Debug.Log(item.childCount);
+                    for (int i = 0; i <= item.childCount - 1; i++)
+                    {
+                        string[] strarray = SplitStr(item.GetChild(i).name, null);
+                        if (strarray[strarray.Length - 1].Substring(0, 1) == "#")
+                        {
+                            GameObject Cube = GameObject.Instantiate(fm_qt);
+                            //GameObject Cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                            Cube.transform.position = item.GetChild(i).transform.position;
+                            Cube.transform.parent = item.GetChild(i).transform;
+                        }
+                    }
+                    break;
 
                 }
 
